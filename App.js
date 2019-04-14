@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, TextInput, View, Button, Text} from 'react-native';
+import ListItem from './src/components/ListItem/ListItem'
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -29,6 +30,7 @@ export default class App extends Component<Props> {
 
     this.setState(prevState => {
       return {
+        placeName : '',
         places : prevState.places.concat(prevState.placeName)
       }
     })
@@ -36,7 +38,7 @@ export default class App extends Component<Props> {
 
   render() {
     const placesOutput = this.state.places.map((place,i) => {
-       return <Text key={i}>{place}</Text>
+       return <ListItem key={i} listLabel={place} />
     });
 
     return (
