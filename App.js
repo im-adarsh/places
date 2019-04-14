@@ -7,13 +7,14 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, TextInput, View, Button} from 'react-native';
+import {Platform, StyleSheet, TextInput, View, Button, Text} from 'react-native';
 
 type Props = {};
 export default class App extends Component<Props> {
 
   state = {
-    placeName : ''
+    placeName : '',
+    places: []
   }
 
   placeNameChangedHandler = val => {
@@ -21,8 +22,23 @@ export default class App extends Component<Props> {
       placeName : val
     })
   }
+  onSubmitHandler = () => {
+    if (this.state.placeName.trim() === "") {
+      return;
+    }
+
+    this.setState(prevState => {
+      return {
+        places : prevState.places.concat(prevState.placeName)
+      }
+    })
+  };
 
   render() {
+    const placesOutput = this.state.places.map((place,i) => {
+       return <Text key={i}>{place}</Text>
+    });
+
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
@@ -31,7 +47,13 @@ export default class App extends Component<Props> {
               value={this.state.placeName}
               placeholder="Enter places here."
               onChangeText={this.placeNameChangedHandler} />
-          <Button title="Add" style={styles.placeButton}/>
+          <Button
+              title="Add"
+              style={styles.placeButton}
+              onPress={this.onSubmitHandler}/>
+        </View>
+        <View>
+          {placesOutput}
         </View>
       </View>
     );
