@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, TextInput, View} from 'react-native';
+import {Platform, StyleSheet, TextInput, View, Button} from 'react-native';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -25,11 +25,14 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-            style={{borderColor:"black",borderWidth:1,width:300,}}
-            value={this.state.placeName}
-            placeholder="Enter places here."
-            onChangeText={this.placeNameChangedHandler} />
+        <View style={styles.inputContainer}>
+          <TextInput
+              style={styles.placeInput}
+              value={this.state.placeName}
+              placeholder="Enter places here."
+              onChangeText={this.placeNameChangedHandler} />
+          <Button title="Add" style={styles.placeButton}/>
+        </View>
       </View>
     );
   }
@@ -37,19 +40,22 @@ export default class App extends Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex:1,
+    justifyContent: 'flex-start',
+    padding:16,
+    paddingTop:80,
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  inputContainer: {
+    width : "100%",
+    flexDirection:"row",
+    justifyContent: "space-between",
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  placeInput: {
+    width: "70%",
   },
+  placeButton: {
+    width:"30%",
+  }
+
 });
