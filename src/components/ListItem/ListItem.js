@@ -18,11 +18,13 @@ const styles = StyleSheet.create({
         backgroundColor: "#eee",
         flexDirection: "row",
         alignItems:"center",
+        borderRadius: 10,
     },
     placeImage: {
         marginRight:8,
         height:30,
         width: 30,
+        borderRadius: 10,
     }
 });
 
