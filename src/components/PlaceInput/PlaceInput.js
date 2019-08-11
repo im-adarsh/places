@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, TextInput, Button, StyleSheet } from "react-native";
 
-class PlaceInput extends Component {
+export default class PlaceInput extends Component {
     state = {
         placeName: ""
     };
@@ -54,5 +54,3 @@ const styles = StyleSheet.create({
         width: "30%"
     }
 });
-
-export default PlaceInput;
