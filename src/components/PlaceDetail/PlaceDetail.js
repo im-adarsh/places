@@ -5,15 +5,15 @@ const placeDetail = props => {
     let modelContent = null;
     if (props.selectedPlace) {
         modelContent = (
-            <View>
-                <Image source={props.selectedPlace.image}/>
+            <View style={styles.detailCard}>
+                <Image source={props.selectedPlace.image} style={styles.detailCardImg}/>
                 <Text>{props.selectedPlace.placeName}</Text>
             </View>
         )
     }
     return (
         <Modal visible={props.selectedPlace !== null} animationType="slide">
-            <View>
+            <View style={styles.modalContainer}>
                 {modelContent}
                 <View>
                     <Button title="Delete" color="red"/>
@@ -25,9 +25,19 @@ const placeDetail = props => {
 };
 
 const styles = StyleSheet.create({
-   modalContainer : {
-       margin : 22,
-   }
+    modalContainer: {
+        marginTop : 30,
+    },
+    detailCard: {
+        padding: 24,
+        flexDirection: "column",
+        alignItems:"center",
+        backgroundColor: "#eee",
+    },
+    detailCardImg: {
+        width: "100%",
+        height: 400,
+    },
 });
 
 export default placeDetail;
